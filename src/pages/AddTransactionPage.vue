@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LastTransactionTable from '../components/LastTransactionTable.vue';
-import AddTransactionForm from '@/components/AddTransactionForm.vue';
+    import LastTransactionTable from '../components/LastTransactionTable.vue';
+    import AddTransactionForm from '@/components/AddTransactionForm.vue';
 </script>
 
 <template>

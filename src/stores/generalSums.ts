@@ -10,12 +10,12 @@ const generalSums = defineStore('generalSums', () => {
     const monthlyIncome = ref(0);
     const monthlyExpenses = ref(0);
 
-    function updateAllBalances(amount: number, type: 'expense' | 'income') {
-        const amountWithSign = type === 'expense' ? -amount : amount;
-        totalBalance.value += amount;
-        totalIncome.value += income;
-        totalExpenses.value += expenses;
-    }
+    // function updateAllBalances(amount: number, type: 'expense' | 'income') {
+    //     const amountWithSign = type === 'expense' ? -amount : amount;
+    //     totalBalance.value += amount;
+    //     totalIncome.value += income;
+    //     totalExpenses.value += expenses;
+    // }
 
     return {
         totalBalance,

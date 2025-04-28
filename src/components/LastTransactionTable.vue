@@ -2,6 +2,7 @@
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ScrollPanel from 'primevue/scrollpanel';
+import Message from 'primevue/message';
 import { useTransactionsStore } from '@/stores/allTransactions';
 import { formatMoneySum } from '@/utils/transactions';
 
@@ -11,15 +12,17 @@ const { allTransactions } = useTransactionsStore();
 <template>
     <ScrollPanel style="width: 100%; height: 120px" class="scrollable-container">
         <DataTable
+            v-if="allTransactions.length > 0"
             :value="allTransactions"
             class="table"
             :size="'small'"
             :pt="{
                 column: {
                     bodyCell: { style: { padding: '3px' } },
-                    headerCell: { style: { padding: '3px' } },
+                    headerCell: { style: { padding: '3px', display: 'none' }, },
                 },
             }"
+            thead="{style: { display: 'none' }}"
         >
             <Column field="name"></Column>
             <Column field="date"></Column>
@@ -35,23 +38,20 @@ const { allTransactions } = useTransactionsStore();
                 </template></Column
             >
         </DataTable>
+        <Message v-else variant="simple" size="small" severity="info">No transactions yet</Message>
     </ScrollPanel>
 </template>
 
 <style scoped>
-.table {
-    font-size: 10px;
-}
+    .cell {
+        padding: 1px;
+        color: red;
+        font-size: 100px;
+    }
 
-.cell {
-    padding: 1px;
-    color: red;
-    font-size: 100px;
-}
-
-.scrollable-container {
-    border: 1px solid #49494a;
-    border-radius: 3px;
-    margin-bottom: 5px;
-}
+    .scrollable-container {
+        border: 1px solid #49494a;
+        border-radius: 3px;
+        margin-bottom: 5px;
+    }
 </style>
